@@ -1,0 +1,6 @@
+[submodule "py_github_import"]
+	path = py_github_import
+	url = https://github.com/ivellios/py_github_import
+[submodule "stack_overflow_import"]
+	path = stack_overflow_import
+	url = https://github.com/overfl0/stack_overflow_import
