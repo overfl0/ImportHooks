@@ -3,21 +3,14 @@ import importlib.machinery
 import sys
 import time
 
-import serial
+from .helpers import connect_to_first_arduino_found
 
-import serial.tools.list_ports
-
-ports = serial.tools.list_ports.comports()
-arduinos = list(filter(lambda device: device.pid == 32822 and device.vid == 9025, ports))
-if not arduinos:
-    raise RuntimeError('Could not find connected arduinos!')
-
-print('Attempting connection to {}'.format(arduinos[0].device))
-arduino = serial.Serial(arduinos[0].device, 115200, timeout=.1)
+arduino = connect_to_first_arduino_found()
 
 
 def get_filename(fullname):
     return 'arduino.py'
+
 
 def is_package(fullname):
     return False
@@ -51,4 +44,3 @@ class MyImporter(importlib.abc.SourceLoader, importlib.abc.MetaPathFinder):
 
 
 sys.meta_path.insert(0, MyImporter())
-
