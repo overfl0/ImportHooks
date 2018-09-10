@@ -5,7 +5,15 @@ import time
 
 import serial
 
-arduino = serial.Serial('COM8', 115200, timeout=.1)
+import serial.tools.list_ports
+
+ports = serial.tools.list_ports.comports()
+arduinos = list(filter(lambda device: device.pid == 32822 and device.vid == 9025, ports))
+if not arduinos:
+    raise RuntimeError('Could not find connected arduinos!')
+
+print('Attempting connection to {}'.format(arduinos[0].device))
+arduino = serial.Serial(arduinos[0].device, 115200, timeout=.1)
 
 
 def get_filename(fullname):
