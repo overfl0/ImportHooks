@@ -5,6 +5,7 @@ def get_connected_arduinos():
     arduino_vids = [
         9025,  # Original Arduino
         6790,  # CH340 - based USB-serial clones
+        6991,  # Arduino Pro Micro
     ]
 
     ports = serial.tools.list_ports.comports()
