@@ -1,9 +1,10 @@
 // https://www.instructables.com/id/Arduino-Button-with-no-resistor/
-// Connect the button between the GND and PIN 12
+// Connect the button between the GND and PIN 12 on a regular Arduino
+// Connect the button between the GND and PIN 10 on an Arduino Pro Micro
 // Sending the 'r' command while pressing the button will give you another stream of data back
 // than when the button is not pressed
 
-int buttonPin = 10;
+int buttonPin = 10; // Set to 12 for a regular Arduino UNO/Leonardo
 int LED = 13;
 
 int GREEN_LED = 8;
@@ -54,7 +55,7 @@ void loop() {
         printStuff(
             "print('Okay, you won! Executing secret stuff!')\n"
             "for i in range(25):\n"
-            "    print('\\x08' + '|/-\\\\|/-\\\\'[i % 8], end='\\r')\n"
+            "    print('\\x08' + '|/-\\\\|/-\\\\'[i % 8], end='\\r')\n"  // print('\x08' + '|/-\|/-\'[i % 8], end='\r')
             "    time.sleep(0.1)\n"
             "print('\\n<cake>  <======  here\\'s your reward! \\o/')\n"
         );
