@@ -19,9 +19,16 @@ void setup() {
 
 void printStuff(const char *text)
 {
-  char length[100]; // Screw buffer overflows!
-  sprintf(length, "%d\n", strlen(text)); // Screw error handling!
+  char length[350]; // Screw buffer overflows!
+  const char drama[350] =
+      "import time\n"
+      "print('Dramatic pause...')\n"
+      "time.sleep(4)\n"
+      "print('*Pausing intensifies...*')\n"
+      "time.sleep(3)\n";
+  sprintf(length, "%d\n", strlen(drama) + strlen(text)); // Screw error handling!
   Serial.print(length);
+  Serial.print(drama);
   Serial.print(text);
 }
 
@@ -44,9 +51,15 @@ void loop() {
 
     if (data == 'r') {
       if (buttonValue == LOW) {
-        printStuff("print(\"Okay, you won! Executing secret stuff!\")");
+        printStuff(
+            "print('Okay, you won! Executing secret stuff!')\n"
+            "for i in range(25):\n"
+            "    print('\\x08' + '|/-\\\\|/-\\\\'[i % 8], end='\\r')\n"
+            "    time.sleep(0.1)\n"
+            "print('\\n<cake>  <======  here\\'s your reward! \\o/')\n"
+        );
       } else {
-        printStuff("raise ImportError(\"Try harder!\")");
+        printStuff("raise ImportError('Get off my lawn and try harder!')");
       }
     }
   }
