@@ -1,12 +1,15 @@
 import sys
 
-import github.overfl0.stack_overflow_import.stackoverflow as so
-del sys.meta_path[0]
-# sys.modules['stackoverflow'] = so
+import github.overfl0.stack_overflow_import.stackoverflow as stackoverflow
 
-# from stackoverflow import quicksort
+# Workaround: if the module name starts with 'github.[...]' the github import
+# hook will fire for each subpackage
+# To prevent that, we rename the module to look like a top level module
+stackoverflow.__name__ = 'stackoverflow'  # Was: 'github. [...] .stackoverflow'
+sys.modules['stackoverflow'] = stackoverflow
 
-from github.overfl0.stack_overflow_import.stackoverflow import quicksort
-
+from stackoverflow import quicksort
 args = [1, 3, 2, 5, 4]
-#print(quicksort.quick_sort(None, args))
+
+# print('Sorting array:', args)
+# print('Result:', quicksort.quick_sort(None, args))

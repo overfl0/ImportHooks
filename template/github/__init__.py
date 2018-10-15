@@ -29,7 +29,7 @@ class GithubLoader(importlib.abc.SourceLoader):
 
     def get_data(self, filename):
         print('MyLoader: Fetching {} from our virtual filesystem'.format(filename))
-        # Workarouond to simplify things
+        # Workaround to simplify things
         if filename == 'http://github.com/FAKE/__init__.py':
             return ''
 
