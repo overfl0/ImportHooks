@@ -13,3 +13,6 @@ args = [1, 3, 2, 5, 4]
 
 # print('Sorting array:', args)
 # print('Result:', quicksort.quick_sort(None, args))
+
+# quicksort.qsort_in_place(args, 0, len(args) - 1)
+# print('Result:', args)
