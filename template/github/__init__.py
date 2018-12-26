@@ -6,7 +6,7 @@ from .ghprocessor import get_github, create_base_url
 
 
 def is_package(fullname):
-    # Check if file.py exists
+    # Check if file.py DOESN'T exist
 
 
 class GithubModuleFinder(importlib.abc.MetaPathFinder):
