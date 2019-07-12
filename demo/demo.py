@@ -4,7 +4,7 @@ import importlib.machinery
 
 
 data = {
-    'custom_module/__init__.py': b'''print('Executing intercept_modules.__init__.py')'''
+    'custom_module/__init__.py': b'''print('Executing custom_moduledemo.py.__init__.py')'''
 }
 
 
